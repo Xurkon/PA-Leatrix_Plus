@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PA-Leatrix_Plus - Documentation</title>
+    <meta name="description"
+        content="Comprehensive quality of life addon for World of Warcraft 3.3.5a on Project Ascension">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-gold: #f0b132;
+            --accent-purple: #a855f7;
+            --accent-blue: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-orange: #e67e22;
+            --accent-red: #f85149;
+            --border-color: #30363d;
+            --code-bg: #1f2428;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 50%, #1a1625 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent-gold) 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .badge-version {
+            background: var(--accent-blue);
+            color: #fff;
+        }
+
+        .badge-addon {
+            background: var(--accent-purple);
+            color: #fff;
+        }
+
+        .badge-ascension {
+            background: var(--accent-orange);
+            color: #fff;
+        }
+
+        .nav {
+            background: var(--bg-secondary);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        ul,
+        ol {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background: var(--code-bg);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            color: var(--accent-orange);
+        }
+
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre code {
+            padding: 0;
+            background: none;
+            color: var(--text-primary);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-gold);
+        }
+
+        .feature-card h4 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .command-table th,
+        .command-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .command-table th {
+            background: var(--bg-tertiary);
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+
+        .command-table td {
+            color: var(--text-secondary);
+        }
+
+        .command-table code {
+            color: var(--accent-blue);
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .credit-card {
+            background: var(--bg-tertiary);
+            padding: 1.25rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .credit-card h4 {
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .credit-card p {
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        .credit-card a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .credit-card a:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--accent-gold), #e6a528);
+            color: #000;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(240, 177, 50, 0.4);
+        }
+
+        .btn-github {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-github:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .warning-box {
+            background: rgba(248, 81, 73, 0.1);
+            border: 1px solid var(--accent-red);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .warning-box h4 {
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-box {
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .info-box h4 {
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <h1>PA-Leatrix_Plus</h1>
+        <p class="subtitle">Quality of Life Addon for Project Ascension (WoW 3.3.5a)</p>
+        <div class="badges">
+            <span class="badge badge-addon">WoW Addon</span>
+            <span class="badge badge-version">v3.0.131-PA1</span>
+            <span class="badge badge-ascension">Project Ascension</span>
+        </div>
+        <div class="hero-buttons">
+            <a href="https://github.com/Xurkon/PA-Leatrix_Plus/releases/latest" class="btn">⬇️ Download Latest</a>
+            <a href="https://github.com/Xurkon/PA-Leatrix_Plus" class="btn btn-github">📂 View on GitHub</a>
+        </div>
+    </header>
+
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#overview">Overview</a>
+            <a href="#features">Features</a>
+            <a href="#installation">Installation</a>
+            <a href="#usage">Usage</a>
+            <a href="#ascension-fixes">Ascension Fixes</a>
+            <a href="#credits">Credits</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="overview">
+            <h2>📖 Overview</h2>
+            <p>
+                <strong>PA-Leatrix_Plus</strong> is a comprehensive quality of life addon for World of Warcraft 3.3.5a,
+                specifically ported and maintained for <strong>Project Ascension</strong>. Originally created by Leatrix
+                and ported to WoTLK 3.3.5 by Sattva-108, this version includes fixes and compatibility patches for
+                Project Ascension's unique client modifications.
+            </p>
+            <p>
+                The addon is modular by design - you only enable the features you want, keeping your UI clean and
+                your game running efficiently. Configuration is done through an intuitive in-game menu accessible
+                via <code>/ltp</code> or the minimap button.
+            </p>
+        </section>
+
+        <section id="features">
+            <h2>✨ Features</h2>
+            <p>Leatrix Plus includes a massive collection of quality of life improvements organized into categories:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🤖 Automation</h4>
+                    <p>Faster looting, auto quest accept/turn-in, auto sell junk, auto repair, auto accept summons, and
+                        auto release in PvP.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💬 Chat Enhancements</h4>
+                    <p>Hide chat buttons, unclamp chat frame, class colors, copy/paste support, increased history, and
+                        message filtering.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🗺️ Minimap</h4>
+                    <p>Square minimap option, combine addon buttons, resize minimap, and enhanced tracking.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>💡 Tooltips</h4>
+                    <p>Enhanced tooltip information, customizable positioning, and additional item details.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>📜 Quest Log</h4>
+                    <p>Improved quest tracking, quest level display, and quest automation options.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>✈️ Flight Paths</h4>
+                    <p>Show all available flight paths, enhanced flight map, and taxi improvements.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚠️ Error Frame</h4>
+                    <p>Smaller error messages, faster fade time, and custom inventory full sounds.</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🛡️ Social Controls</h4>
+                    <p>Block duels, party invites, friend requests. Auto-accept from friends and guildmates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation">
+            <h2>📦 Installation</h2>
+            <ol>
+                <li><strong>Download</strong> the latest release from <a
+                        href="https://github.com/Xurkon/PA-Leatrix_Plus/releases/latest">GitHub Releases</a></li>
+                <li><strong>Extract</strong> the <code>Leatrix_Plus</code> folder</li>
+                <li><strong>Copy</strong> the folder to your WoW <code>Interface\AddOns\</code> directory</li>
+                <li><strong>Restart</strong> World of Warcraft or type <code>/reload</code></li>
+            </ol>
+
+            <div class="info-box">
+                <h4>📁 Addon Location</h4>
+                <p>For Project Ascension, the typical path is:<br>
+                    <code>Ascension Launcher\resources\client\Interface\AddOns\Leatrix_Plus\</code>
+                </p>
+            </div>
+        </section>
+
+        <section id="usage">
+            <h2>🎮 Usage</h2>
+            <p>Access the configuration menu using any of these methods:</p>
+
+            <table class="command-table">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>/ltp</code></td>
+                        <td>Open configuration menu</td>
+                    </tr>
+                    <tr>
+                        <td>Minimap Button Click</td>
+                        <td>Open configuration menu</td>
+                    </tr>
+                    <tr>
+                        <td>Minimap Button Shift+Click</td>
+                        <td>Reload user interface</td>
+                    </tr>
+                    <tr>
+                        <td>Minimap Button Alt+Click</td>
+                        <td>Toggle error messages visibility</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Configuration Tips</h3>
+            <ul>
+                <li>Options are organized into pages - use the navigation at the bottom of the config window</li>
+                <li>Some options require a UI reload - the "Reload" button will glow when needed</li>
+                <li>Hover over options to see detailed tooltips explaining each feature</li>
+                <li>Use Shift+Ctrl+Click on some config buttons for preset profiles</li>
+            </ul>
+        </section>
+
+        <section id="ascension-fixes">
+            <h2>🔧 Ascension-Specific Fixes</h2>
+            <p>This port includes fixes specifically for Project Ascension's modified 3.3.5a client:</p>
+
+            <h3>InterfaceOptionsControlsPanelAutoLootCorpse Fix</h3>
+            <div class="warning-box">
+                <h4>Original Error</h4>
+                <p><code>attempt to index global 'InterfaceOptionsControlsPanelAutoLootCorpse' (a nil value)</code></p>
+            </div>
+
+            <p><strong>Problem:</strong> The addon was trying to access a standard WoW UI element that doesn't exist in
+                Project Ascension's modified client.</p>
+
+            <p><strong>Solution:</strong> Added nil checks before accessing the element:</p>
+
+            <pre><code>if InterfaceOptionsControlsPanelAutoLootCorpse then
+    InterfaceOptionsControlsPanelAutoLootCorpse:Disable()
+    local autoLootText = InterfaceOptionsControlsPanelAutoLootCorpseText
+    if autoLootText then
+        autoLootText:SetText("Auto Loot option is controlled by Leatrix Plus.")
+        autoLootText:SetAlpha(0.6)
+    end
+end</code></pre>
+
+            <p>The auto-loot functionality still works through the <code>SetCVar</code> calls - it just won't modify the
+                (non-existent) Interface Options checkbox.</p>
+        </section>
+
+        <section id="credits">
+            <h2>👏 Credits</h2>
+            <div class="credits-grid">
+                <div class="credit-card">
+                    <h4>Leatrix</h4>
+                    <p>Original addon author</p>
+                    <a href="https://github.com/leatrix/leatrix">GitHub</a>
+                </div>
+                <div class="credit-card">
+                    <h4>Sattva-108</h4>
+                    <p>WoTLK 3.3.5 port</p>
+                    <a href="https://github.com/Sattva-108/Leatrix_Plus">GitHub</a>
+                </div>
+                <div class="credit-card">
+                    <h4>Xurkon</h4>
+                    <p>Project Ascension fixes</p>
+                    <a href="https://github.com/Xurkon">GitHub</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>
+            <strong>PA-Leatrix_Plus</strong> &copy; 2025 |
+            <a href="https://github.com/Xurkon/PA-Leatrix_Plus">GitHub</a> |
+            <a href="https://ascension.gg/">Project Ascension</a>
+        </p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;">
+            This addon is not affiliated with or endorsed by Blizzard Entertainment.
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,4 @@
+PA-Leatrix_Plus
+Version: 3.3.5 (3.0.131-PA1)
+Author: Leatrix (Original), Sattva-108 (WOTLK Port), Xurkon (Ascension Fixes)
+Game Version: 3.3.5a (Project Ascension)
